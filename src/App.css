@@ -1,0 +1,65 @@
+
+.carousel-indicators button {
+  width: 20px !important;
+  height: 20px !important;
+  border-radius: 50%;
+}
+
+.cardgroup{  
+  display: flex;
+  justify-content: center;
+  margin-left: 12%;
+  margin-right: 12%;
+  margin-top: 25px;
+  box-shadow: 8px 4px 8px 4px  grey ;
+  border-color: lightpink;
+  border-style: solid;
+}
+
+.cardgroup img{
+  width: 50px;
+  display: grid;
+  align-items: center;
+  margin-left: 50%;
+  transform: translate(-50%);
+  padding-top: 25px;
+}
+.cardtitletext{
+  text-align: center;
+}
+
+#registerform{
+  display: none;
+}
+#loginsubmit{
+  border-radius: 50px;
+
+}
+.formlogin{
+  margin-top: 10%;
+  
+}
+
+@media screen and (max-width: 480px) {
+  .cardgroup {
+    display:grid;
+    margin: 0;
+    margin-top: 30%;
+    margin-top: 20px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
