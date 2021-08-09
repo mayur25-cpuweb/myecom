@@ -1,5 +1,9 @@
+*,body{
+  margin: 0;
+  padding: 0;
 
-.carousel-indicators button {
+}
+.carousel-indicators button{
   width: 20px !important;
   height: 20px !important;
   border-radius: 50%;
@@ -39,7 +43,88 @@
   margin-top: 10%;
   
 }
+#navcenter{
+margin-left: 14%;
+}
+#responsive-navbar-nav a {
+  color: white;
+  text-decoration: none;
+  justify-content: space-evenly;
 
+}
+#responsive-navbar-nav a :hover{
+  color: pink;
+}
+.logosnap{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  margin-right: 10px;
+}
+.titlelogo{
+  font-family: 'Yomogi', cursive;
+  font-size: 30px;
+  line-height: 50px;
+  color:lightcoral;
+  text-decoration: none;
+}
+.titlelogo:hover{
+  color: lightcoral;
+}
+.frontservicecard{
+  /* background-color: red; */
+  padding-bottom: 25px;
+  padding-right: 25px;
+  padding-left: 25px;
+  width: 90%;
+}
+
+.productcard{
+  /* background-color: lightpink; */
+ margin-top: 1%;
+}
+
+.pcard:hover{ 
+  transition: ease-out;
+  transition-duration: 0.5s;
+  /* background-color:black; */
+  box-shadow: 4px 6px 6px 5px grey;
+}
+.newcollectiontext{
+  font-family: 'Share Tech Mono', monospace;
+}
+.pfoot{
+  font-family: 'Unica One', cursive;
+}
+
+.card-img-topservicehome{
+  width: 100px !important;
+  display: flex;
+  /* justify-content: center !important; */
+  margin-left: 29%;
+  border-radius: 50px;
+  margin-top: 5px;
+}
+.cartcard{
+  margin-top: 1%;
+  /* margin-right: 30%; */
+  width: 50%;
+  margin-left: 10%;
+}
+
+@media screen and (max-width: 1200px) {
+  #navcenter{
+    margin-left:0;
+    }
+    .cartcard{
+      margin-top: 2%;
+      /* margin-right: 30%; */
+      width:100%;
+      margin-left: 0%;
+
+    }
+}
 @media screen and (max-width: 480px) {
   .cardgroup {
     display:grid;
@@ -48,6 +133,7 @@
     margin-top: 20px;
   }
 }
+
 
 
 

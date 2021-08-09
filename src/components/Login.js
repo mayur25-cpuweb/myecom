@@ -10,13 +10,13 @@ import Register from './Register';
 import Loginscript from './loginscript';
 
 function Login() {
- 
+
   return (
     <React.Fragment >
       <Router>
         <CardGroup className="cardgroup">
           <Card>
-            <Card.Img variant="top" src="https://cdn.onlinewebfonts.com/svg/img_568656.png" />
+            <Card.Img variant="toplogin" src="https://cdn.onlinewebfonts.com/svg/img_568656.png" />
             <Card.Body>
 
             <Loginscript></Loginscript>
