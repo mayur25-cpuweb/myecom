@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import Card from 'react-bootstrap/Card'
 import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter as Router, Link, Switch, Route, NavLink } from "react-router-dom";
+import { checkLogin } from '../actions/userAction';
 
 
 function Loginscript() {
@@ -25,17 +26,13 @@ function Loginscript() {
     e.target.name=="password" && setpassword(e.target.value);
   }
   function Auth() {
-      var b=users.some((u)=>{
-          return u.email==email && u.password==password;
-      });
-    //   alert(b)
-    if (b==true) {
-        // alert(`${email} welcome`);
-        dispatch({type:"LOGIN_USER", payload:email});
-        
-    }else{
-        alert('wrong credentials')
-    }
+    alert("auth");
+    alert(email);
+    alert(password);
+        dispatch(checkLogin({email,password}));
+
+
+
 }
 
     return (

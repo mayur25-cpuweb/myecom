@@ -43,5 +43,16 @@ app.get('/list', (req, res) => {
     })
 
 })
+app.post('/check-login', bodyParser.json() ,(req, res) => {
+    var usercollection = connection.db('myecom').collection('register');
+    usercollection.find({email:req.body.email, password:req.body.password}).toArray((err, result) => {
+        if (!err && result.length>0) {
+            res.send({ status: 'ok', data: result[0] });
+        } else {
+            res.send({ status: 'error', data: err })
+        }
+    })
+
+})
 
 app.listen(4000, () => { console.log("on port 4000"); })

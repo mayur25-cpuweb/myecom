@@ -7,8 +7,12 @@ import { BrowserRouter as Router, Link, Switch, Route, NavLink } from "react-rou
 import Login from './Login';
 import Home1 from './home';
 import ShoppingCart from './ShoppingCart';
+import { useSelector } from 'react-redux';
 
 function Navb() {
+
+  const user = useSelector(state => state.user);
+
   return (
     <Router>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className="sticky-top">
@@ -44,6 +48,9 @@ function Navb() {
               <Nav.Link><NavLink exact activeClassName="active" to="/Login" >
                 JEWELLERY
               </NavLink></Nav.Link>
+              {user &&  <Nav.Link><NavLink exact activeClassName="active" to="/Login" >
+                Logout
+              </NavLink></Nav.Link>}
               {/* <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
