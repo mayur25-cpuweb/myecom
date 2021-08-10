@@ -1,10 +1,11 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import Card from 'react-bootstrap/Card'
+import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter as Router, Link, Switch, Route, NavLink } from "react-router-dom";
 
 
-function Loginscript(props) {
+function Loginscript() {
    const [users, setUser] = useState([]);
    const [password, setpassword] = useState("");
    const [email, setemail] = useState("");
@@ -16,17 +17,21 @@ function Loginscript(props) {
       })
   }, [])
 
+  const dispatch = useDispatch()
+  const user = useSelector(state => state.user);
+  
   function setValue(e) {
     e.target.name=="email" && setemail(e.target.value);
     e.target.name=="password" && setpassword(e.target.value);
   }
   function Auth() {
-      var b=users.every((u)=>{
+      var b=users.some((u)=>{
           return u.email==email && u.password==password;
       });
     //   alert(b)
     if (b==true) {
-        alert(`${email} welcome`);
+        // alert(`${email} welcome`);
+        dispatch({type:"LOGIN_USER", payload:email});
         
     }else{
         alert('wrong credentials')
@@ -36,6 +41,9 @@ function Loginscript(props) {
     return (
        
         <React.Fragment>
+            {user && <span>{user.email}</span>}
+                {user && <button>Logout</button>}
+                {!user && <button onClick={Auth}>Login</button>}
         <div id="loginform">
             <Card.Title className="cardtitletext">Login</Card.Title>
             <form className="formlogin" >

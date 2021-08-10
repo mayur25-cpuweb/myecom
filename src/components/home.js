@@ -6,13 +6,12 @@ export class Home1 extends Component {
     return (
       // carsoul-line
       <React.Fragment>
-        <Carousel fade style={{ height: '91vh', backgroundColor: 'blue' }}>
+        <Carousel fade style={{ height: '89.5vh', backgroundColor: 'blue' }}>
           <Carousel.Item>
             <img
               className="d-block w-100"
               src=""
               alt="First slide"
-
             // height="692vh"
             />
             <Carousel.Caption>
