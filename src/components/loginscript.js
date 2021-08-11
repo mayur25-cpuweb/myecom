@@ -31,8 +31,6 @@ function Loginscript() {
     alert(password);
         dispatch(checkLogin({email,password}));
 
-
-
 }
 
     return (
