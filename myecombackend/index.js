@@ -55,4 +55,15 @@ app.post('/check-login', bodyParser.json() ,(req, res) => {
 
 })
 
+app.post('/Addproduct', bodyParser.json(), (req, res) => {
+    var usercollection = connection.db('myecom').collection('Product');
+    usercollection.insert(req.body, (err, result) => {
+        if (!err) {
+            res.send({ status: 'ok', data: "Product added successfully" });
+        } else {
+            res.send({ status: 'error in adding product', data: err })
+        }
+    })
+})
+
 app.listen(4000, () => { console.log("on port 4000"); })

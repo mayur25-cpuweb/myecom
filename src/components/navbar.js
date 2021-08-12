@@ -7,11 +7,16 @@ import { BrowserRouter as Router, Link, Switch, Route, NavLink } from "react-rou
 import Login from './Login';
 import Home1 from './home';
 import ShoppingCart from './ShoppingCart';
-import { useSelector } from 'react-redux';
+import { useSelector,useDispatch } from 'react-redux';
 
 function Navb() {
 
   const user = useSelector(state => state.user);
+  const dispatch = useDispatch();
+  function logout() {
+    dispatch({type: 'LOGOUT_USER'});
+    alert('logged out');
+  }
 
   return (
     <Router>
@@ -48,9 +53,7 @@ function Navb() {
               <Nav.Link><NavLink exact activeClassName="active" to="/Login" >
                 JEWELLERY
               </NavLink></Nav.Link>
-              {user &&  <Nav.Link><NavLink exact activeClassName="active" to="/Login" >
-                Logout
-              </NavLink></Nav.Link>}
+             
               {/* <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
@@ -66,11 +69,18 @@ function Navb() {
               <i class="fas fa-shopping-cart"></i>
                 </NavLink>
                 </Nav.Link>
-              <Nav.Link eventKey={2}>
+             
+
+              {user && <Nav.Link>{user.name}&nbsp;&nbsp;<NavLink exact activeClassName="active" to="/Login" onClick={logout} >
+                <i class="fas fa-sign-out-alt"></i>
+              </NavLink></Nav.Link>}
+            
+             {!user && <Nav.Link eventKey={2}>
                 <NavLink exact activeClassName="active" to="/Login" style={{ textDecoration: "none", color: "white" }}>
                   <i class="far fa-user"></i>
                 </NavLink>
-              </Nav.Link>
+              </Nav.Link>}
+
             </Nav>
           </Navbar.Collapse>
         </Container>

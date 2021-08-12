@@ -36,9 +36,6 @@ function Loginscript() {
     return (
        
         <React.Fragment>
-            {user && <span>{user.email}</span>}
-                {user && <button>Logout</button>}
-                {!user && <button onClick={Auth}>Login</button>}
         <div id="loginform">
             <Card.Title className="cardtitletext">Login</Card.Title>
             <form className="formlogin" >
