@@ -8,8 +8,9 @@ import Navb from './components/navbar';
 function App() {
   return (
   <div>
+    <Router>
     <Navb></Navb>
-  
+    </Router>
   </div>
   
   );

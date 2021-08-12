@@ -8,6 +8,7 @@ import Login from './Login';
 import Home1 from './home';
 import ShoppingCart from './ShoppingCart';
 import { useSelector,useDispatch } from 'react-redux';
+import Dashboard from './Dashboard/dashboard';
 
 function Navb() {
 
@@ -19,7 +20,7 @@ function Navb() {
   }
 
   return (
-    <Router>
+    <>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className="sticky-top">
         <Container>
           {/* <NavLink exact activeClassName="active" to="/"> home </NavLink> */}
@@ -38,7 +39,7 @@ function Navb() {
               <Nav.Link> <NavLink exact activeClassName="active" to="/Login">
                 <i class="fas fa-magic"></i> JUST IN
               </NavLink></Nav.Link>
-              <Nav.Link><NavLink exact activeClassName="active" to="/Login">
+              <Nav.Link><NavLink exact activeClassName="active" to="/ShoppingCart">
                 ETHNIC WEAR
               </NavLink></Nav.Link>
               <Nav.Link><NavLink exact activeClassName="active" to="/Login" >
@@ -50,7 +51,7 @@ function Navb() {
               <Nav.Link><NavLink exact activeClassName="active" to="/Login">
                 NIGHT WEAR
               </NavLink></Nav.Link>
-              <Nav.Link><NavLink exact activeClassName="active" to="/Login" >
+              <Nav.Link><NavLink exact activeClassName="active" to="/dashboard" >
                 JEWELLERY
               </NavLink></Nav.Link>
              
@@ -89,10 +90,10 @@ function Navb() {
         <Route path="/" exact component={Home1} />
         <Route path="/Login" exact component={Login} />
         <Route path="/ShoppingCart" exact component={ShoppingCart} />
-
+        <Route path="/dashboard"  component={Dashboard} />
       </Switch>
 
-    </Router>
+</>
   )
 }
 
