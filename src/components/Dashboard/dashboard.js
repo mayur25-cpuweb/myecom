@@ -2,7 +2,6 @@ import React from 'react'
 import {NavLink,Route,Switch} from "react-router-dom";
 import AddProduct from './AddProduct';
 import ListProduct from './ListProduct';
-import UserList from './ListProduct';  
 
 export default function Dashboard() {
 

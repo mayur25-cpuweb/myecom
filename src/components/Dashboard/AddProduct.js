@@ -20,17 +20,20 @@ export default function AddProduct(props) {
       e.target.name=="price" && setprice(e.target.value);
     }  
 
-    function setlogo(e){
+    function setlogoimage(e){
         logofile=e.target.files[0];
         console.log(logofile);
-    }
+
+
+
+      }
     function Productsubmit(){
         var formData= new FormData();
         formData.append("id",productid);
         formData.append("title",producttitle);
         formData.append("price",price);
         formData.append("logo",logofile);
-
+        
         // useEffect(() => {
         //    axios.post("http://localhost:4000/Addproduct",formData).then((res) => {
         //        console.log(res.data.data);
@@ -52,9 +55,10 @@ export default function AddProduct(props) {
             alert("Upload formData error");
         })
     }
+
     return (
         <div className="" style={{display: 'flex', justifyContent: 'center'}}>
-        <form>
+        <form method="post">
   <div class="form">
     <div class="col-md-12 mb-3">
       <label for="validationDefault01">product title</label>
@@ -73,7 +77,7 @@ export default function AddProduct(props) {
     </div>
   <div class="input">
     <div class="custom-file">
-      <input type="file" onChange={(e)=>{setlogo(e)}} class="custom-file-input" id="uploadimage"/>
+      <input type="file" onChange={(e)=>{setlogoimage(e)}} name="logo" value={logofile} className="logo" id="logo"/>
     </div>
     </div>
 
