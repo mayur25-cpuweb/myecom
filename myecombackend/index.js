@@ -80,7 +80,7 @@ upload(req,res,(error)=>{
      var productcollection = connection.db('myecom').collection('Product');
      console.log("fileimage",req.files);
      console.log(req.body);
-      productcollection.update({_id:Objectid(req.body._id)},{$set:{logo:req.files.logo[0].filename,productid:req.body.productid,producttitle:req.body.producttitle,price:req.body.price}},(err, result) => {
+      productcollection.insert({logo:req.files.logo[0].filename,productid:req.body.id,producttitle:req.body.title,price:req.body.price},(err, result) => {
           if (!err) {
               res.send({status:"success",data:result});
               
