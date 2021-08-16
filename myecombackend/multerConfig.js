@@ -26,7 +26,7 @@ var storage = multer.diskStorage(
 
                                         if(fieldName=="logo")
                                         {
-                                            if(ext !== '.png' && ext !== '.jpg' && ext !== '.jpeg') {
+                                            if(ext !== '.png' && ext !== '.jpg' && ext !== '.jpeg' && ext !== '.JPG' && ext !== '.PNG') {
                                                 return callback(new Error('Only images are allowed'));
                                             }
                                             callback(null, true);

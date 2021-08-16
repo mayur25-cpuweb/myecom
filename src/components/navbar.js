@@ -9,6 +9,8 @@ import Home1 from './home';
 import ShoppingCart from './ShoppingCart';
 import { useSelector, useDispatch } from 'react-redux';
 import Dashboard from './Dashboard/dashboard';
+import  Productdetail from "./productdetail";
+import Test from './test';
 
 function Navb() {
 
@@ -96,6 +98,8 @@ function Navb() {
         <Route path="/Login" exact component={Login} />
         <Route path="/ShoppingCart" exact component={ShoppingCart} />
         <Route path="/dashboard" component={Dashboard} />
+        <Route path="/productdetail/:id" component={Productdetail} />
+
       </Switch>
 
     </>

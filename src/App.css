@@ -106,23 +106,43 @@ margin-left: 14%;
   border-radius: 50px;
   margin-top: 5px;
 }
-.cartcard{
+.maincart{
   margin-top: 1%;
-  /* margin-right: 30%; */
-  width: 50%;
-  margin-left: 10%;
+ display: inline-flex;
+ justify-content: flex-start;
+ width: 50%;
+}
+.secondpricecard{
+  display: inline-flex;
+  justify-content: flex-start;
+  /* position: absolute;  */
+  text-align: center;
+  background-color:red;
+}
+.pdcard{
+  width:80%;
+  margin-Left:11%;
+}
+.btncart{
+  background-color: lightpink;
+}
+.btncart:hover{
+  background-color:lightcoral;
 }
 
 @media screen and (max-width: 1200px) {
   #navcenter{
     margin-left:0;
     }
-    .cartcard{
+    .maincart{
       margin-top: 2%;
       /* margin-right: 30%; */
       width:100%;
       margin-left: 0%;
-
+    }
+    .pdcard{
+      width: 100%;
+      margin: 0;
     }
 }
 @media screen and (max-width: 480px) {

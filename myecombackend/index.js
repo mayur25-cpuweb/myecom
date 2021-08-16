@@ -56,6 +56,17 @@ app.post('/check-login', bodyParser.json() ,(req, res) => {
     })
 
 })
+app.get('/productlist',(req, res) => {
+    var productcollectionlist = connection.db('myecom').collection('Product');
+    productcollectionlist.find().toArray((err, result) => {
+        if (!err) {
+            res.send({ status: 'ok', data: result });
+        } else {
+            res.send({ status: 'error', data: err })
+        }
+    })
+
+})
 
 // app.post('/Addproduct', bodyParser.json(), (req, res) => {
 //     var usercollection = connection.db('myecom').collection('Product');
@@ -80,7 +91,7 @@ upload(req,res,(error)=>{
      var productcollection = connection.db('myecom').collection('Product');
      console.log("fileimage",req.files);
      console.log(req.body);
-      productcollection.insert({logo:req.files.logo[0].filename,productid:req.body.id,producttitle:req.body.title,price:req.body.price},(err, result) => {
+      productcollection.insert({logo:req.files.logo[0].filename,productid:req.body.id,producttitle:req.body.title,price:req.body.price,pd:req.body.pd},(err, result) => {
           if (!err) {
               res.send({status:"success",data:result});
               
