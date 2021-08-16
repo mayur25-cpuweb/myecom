@@ -6,9 +6,13 @@ var Objectid = require('mongodb').ObjectId;
 const bodyParser = require('body-parser');
 var upload = require('./multerConfig');
 const { json } = require('body-parser');
+var path = require('path');
 
 var app = express();
 app.use(cors());
+
+
+app.use(express.static(path.join(__dirname,"uploads")));
 
 // const { MongoClient } = require('mongodb');
 const uri = "mongodb+srv://myecom:myecom@cluster0.jxghw.mongodb.net/myecom?retryWrites=true&w=majority";

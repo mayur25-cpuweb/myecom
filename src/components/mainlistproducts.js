@@ -27,7 +27,7 @@ useEffect(() => {
             marginTop: '2.5%',
             backgroundColor: 'coral'
         }}>New</span>
-        <img src="https://cdn.shopify.com/s/files/1/2542/7564/products/5_66252b1f-ee51-4d4f-9afe-18ece4e78588_1000x.png?v=1627301931"
+        <img src={ pl.logo ?  `http://localhost:4000/${pl.logo}` : "http://pesmcopt.com/admin-media/images/dummy-product-image.jpg"}
             className="card-img-topproduct" alt="..." style={{ width: "100%", height: "31.5rem", overflow: "hidden" }} />
         <div className="card-body">
             <h6 className="card-title text-center">{pl.producttitle}</h6>
