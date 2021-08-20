@@ -4,7 +4,7 @@ import  Productdetail from "./productdetail";
 import { useDispatch, useSelector } from 'react-redux';
 import  {Productaction}  from "../actions/productaction";
 import axios from 'axios';
-import Test from './test';
+
 function Mainlistproducts() {
     const [product, setproduct] = useState([]);
 useEffect(() => {

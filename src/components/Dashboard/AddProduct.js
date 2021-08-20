@@ -1,6 +1,6 @@
 import axios from 'axios';
 import {React,useEffect,useState} from 'react'
-
+import MultiSelect from 'react-multi-select-component';
 
 
 
@@ -11,6 +11,8 @@ export default function AddProduct(props) {
     const [productid, setproductid] = useState("");
     const [price, setprice] = useState("");
     const [pd, setpd] = useState("");
+
+    const [selected, setSelected] = useState([]);
 
     // const [address, setaddress] = useState("");
     const [uploadPercentage, setuploadPercentage] = useState("")
@@ -28,13 +30,16 @@ export default function AddProduct(props) {
         logofile=e.target.files[0];
         console.log(logofile);
       }
+
     function Productsubmit(){
         var formData= new FormData();
         formData.append("id",productid);
         formData.append("title",producttitle);
         formData.append("price",price);
-        formData.append("logo",logofile);
         formData.append("pd",pd);
+        console.log(JSON.stringify(selected));
+        formData.append("Fruit",JSON.stringify(selected));
+        formData.append("logo",logofile);
 
         // useEffect(() => {
         //    axios.post("http://localhost:4000/Addproduct",formData).then((res) => {
@@ -57,6 +62,19 @@ export default function AddProduct(props) {
             alert("Upload formData error");
         })
     }
+
+    const options = [
+      { label: "Grapes 🍇", value: "grapes" },
+      { label: "Mango 🥭", value: "mango" },
+      { label: "Strawberry 🍓", value: "strawberry", disabled: true },
+      { label: "Watermelon 🍉", value: "watermelon" },
+      { label: "Pear 🍐", value: "pear" },
+      { label: "Apple 🍎", value: "apple" },
+      { label: "Tangerine 🍊", value: "tangerine" },
+      { label: "Pineapple 🍍", value: "pineapple" },
+      { label: "Peach 🍑", value: "peach" },
+    ];
+  
 
     return (
         <div className="" style={{display: 'flex', justifyContent: 'center'}}>
@@ -86,6 +104,18 @@ export default function AddProduct(props) {
   <div class="input">
     <div class="custom-file">
       <input type="file" onChange={(e)=>{setlogoimage(e)}} name="logo" value={logofile} className="logo" id="logo"/>
+    </div>
+    <br/>
+    <div>
+      <h1>Select Fruits</h1>
+      <pre>{JSON.stringify(selected)}</pre>
+      <MultiSelect
+        options={options}
+        value={selected}
+        onChange={setSelected}
+        labelledBy="Select"
+        name="selected"
+      />
     </div>
     </div>
 

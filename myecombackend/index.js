@@ -1,11 +1,9 @@
 var express = require('express');
 var cors = require('cors');
-var bodyparser = require('body-parser');
 var MongoClient = require('mongodb').MongoClient;
-var Objectid = require('mongodb').ObjectId;
+var ObjectId= require('mongodb').ObjectId;
 const bodyParser = require('body-parser');
 var upload = require('./multerConfig');
-const { json } = require('body-parser');
 var path = require('path');
 
 var app = express();
@@ -72,6 +70,44 @@ app.get('/productlist',(req, res) => {
 
 })
 
+app.post('/product-detail', bodyParser.json() ,(req, res) => {
+    var productcollectiondetail = connection.db('myecom').collection('Product');
+    // console.log(req.body);
+    productcollectiondetail.find({_id:ObjectId(req.body.id)}).toArray((err, result) => {
+        if (!err && result.length>0) {
+            res.send({ status: 'ok', data: result});
+        } else {
+            res.send({ status: 'error', data: err })
+        }
+    })
+
+})
+
+
+app.post('/Cart', bodyParser.json(), (req, res) => {
+    var usercollection = connection.db('myecom').collection('Cart');
+    usercollection.insert(req.body, (err, result) => {
+        if (!err) {
+            res.send({ status: 'ok', data: "Added successfully" });
+        } else {
+            res.send({ status: 'error', data: err })
+        }
+    })
+});
+
+app.get('/Cart-list',(req, res) => {
+    var Cartcollectionlist = connection.db('myecom').collection('Cart');
+    Cartcollectionlist.find().toArray((err, result) => {
+        if (!err) {
+            res.send({ status: 'ok', data: result });
+        } else {
+            res.send({ status: 'error', data: err })
+        }
+    })
+
+})
+
+
 // app.post('/Addproduct', bodyParser.json(), (req, res) => {
 //     var usercollection = connection.db('myecom').collection('Product');
 //     usercollection.insert(req.body, (err, result) => {
@@ -95,7 +131,7 @@ upload(req,res,(error)=>{
      var productcollection = connection.db('myecom').collection('Product');
      console.log("fileimage",req.files);
      console.log(req.body);
-      productcollection.insert({logo:req.files.logo[0].filename,productid:req.body.id,producttitle:req.body.title,price:req.body.price,pd:req.body.pd},(err, result) => {
+      productcollection.insert({logo:req.files.logo[0].filename,productid:req.body.id,producttitle:req.body.title,price:req.body.price,pd:req.body.pd,selected:JSON.parse(req.body.selected)},(err, result) => {
           if (!err) {
               res.send({status:"success",data:result});
               
@@ -106,6 +142,8 @@ upload(req,res,(error)=>{
     }
 })
 });
+
+
 
 // app.post('/update-user', async (req,res)=>{
     
