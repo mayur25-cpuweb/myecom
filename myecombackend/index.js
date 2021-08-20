@@ -131,7 +131,9 @@ upload(req,res,(error)=>{
      var productcollection = connection.db('myecom').collection('Product');
      console.log("fileimage",req.files);
      console.log(req.body);
-      productcollection.insert({logo:req.files.logo[0].filename,productid:req.body.id,producttitle:req.body.title,price:req.body.price,pd:req.body.pd,selected:JSON.parse(req.body.selected)},(err, result) => {
+     var sizeArray= req.body.Fruit;
+     console.log(JSON.parse(req.body.Fruit));
+      productcollection.insert({logo:req.files.logo[0].filename,productid:req.body.id,producttitle:req.body.title,price:req.body.price,pd:req.body.pd,selected:sizeArray},(err, result) => {
           if (!err) {
               res.send({status:"success",data:result});
               

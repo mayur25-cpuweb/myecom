@@ -28,6 +28,7 @@ export default function AddProduct(props) {
 
     function setlogoimage(e){
         logofile=e.target.files[0];
+        console.log("---31---");
         console.log(logofile);
       }
 
@@ -39,6 +40,8 @@ export default function AddProduct(props) {
         formData.append("pd",pd);
         console.log(JSON.stringify(selected));
         formData.append("Fruit",JSON.stringify(selected));
+        console.log("----43----");
+        console.log(logofile)
         formData.append("logo",logofile);
 
         // useEffect(() => {
@@ -64,8 +67,8 @@ export default function AddProduct(props) {
     }
 
     const options = [
-      { label: "Grapes 🍇", value: "grapes" },
-      { label: "Mango 🥭", value: "mango" },
+      { label: "Grapes", value: "grapes" },
+      { label: "Mango", value: "mango" },
       { label: "Strawberry 🍓", value: "strawberry", disabled: true },
       { label: "Watermelon 🍉", value: "watermelon" },
       { label: "Pear 🍐", value: "pear" },
