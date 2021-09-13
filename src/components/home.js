@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import Carousel from 'react-bootstrap/Carousel'
-import Mainlistproducts from './mainlistproducts'
+import Mainlistproducts from './homepage/mainlistproducts'
 import Servicefrontcard from './Servicefrontcard'
-import  Productdetail from "./productdetail";
-import ReactDOM from "react-dom";
+import  NW  from "./homepage/NW";
+import  WW  from "./homepage/WW";
+
 
 export class Home1 extends Component {
   render() {
@@ -59,6 +60,34 @@ export class Home1 extends Component {
         </div>
         <br />
        <Mainlistproducts></Mainlistproducts>
+       <hr/>
+       <br/>
+
+       <div className="container text-center newcollectiontext">
+          <div className="text-muted">EXCLUSIVE HERE</div>
+          <h3>KOTA ZARIYA</h3>
+          {/* exclusive daalna hai yaha */}
+<NW></NW>
+        </div>
+        <hr/>
+        <br/>
+        <div className="container text-center newcollectiontext">
+          <div className="text-muted">Western Wear</div>
+          <h3>Dresses</h3>
+          {/* exclusive daalna hai yaha */}
+<WW></WW>
+        </div>
+        <hr/>
+        <br/>
+
+        <div className="container text-center newcollectiontext">
+          <div className="text-muted">Be Comfortable</div>
+          <h3>Night Wear</h3>
+          {/* exclusive daalna hai yaha */}
+<NW></NW>
+        </div>
+        <hr/>
+        <br/>
       </React.Fragment>
 
     )

@@ -95,10 +95,12 @@ app.post('/Cart', bodyParser.json(), (req, res) => {
     })
 });
 
-app.get('/Cart-list',(req, res) => {
+app.get('/Cart-list', bodyParser.json() ,(req, res) => {
     var Cartcollectionlist = connection.db('myecom').collection('Cart');
-    Cartcollectionlist.find().toArray((err, result) => {
+    Cartcollectionlist.find({uemail:req.body.useremailcart}).toArray((err, result) => {
+        console.log(req.body);
         if (!err) {
+            // console.log("in index.js 101 cart-list no error");
             res.send({ status: 'ok', data: result });
         } else {
             res.send({ status: 'error', data: err })
@@ -106,6 +108,21 @@ app.get('/Cart-list',(req, res) => {
     })
 
 })
+
+app.post('/Wear-list', bodyParser.json() ,(req, res) => {
+    var wcollectionlist = connection.db('myecom').collection('Product');
+    wcollectionlist.find({category:req.body.category}).toArray((err, result) => {
+        console.log(req.body);
+        if (!err) {
+            console.log("in index.js 117 nwlist no error");
+            res.send({ status: 'ok', data: result });
+        } else {
+            res.send({ status: 'error', data: err })
+        }
+    })
+
+})
+
 
 
 // app.post('/Addproduct', bodyParser.json(), (req, res) => {
@@ -119,7 +136,7 @@ app.get('/Cart-list',(req, res) => {
 //     })
 // })
 
-app.post('/Addproduct', async (req, res)=> {
+app.post('/Addproduct',(req, res)=> {
     console.log("line 71----");
 upload(req,res,(error)=>{
     if (error) {
@@ -133,7 +150,7 @@ upload(req,res,(error)=>{
      console.log(req.body);
      var sizeArray= req.body.Fruit;
      console.log(JSON.parse(req.body.Fruit));
-      productcollection.insert({logo:req.files.logo[0].filename,productid:req.body.id,producttitle:req.body.title,price:req.body.price,pd:req.body.pd,selected:sizeArray},(err, result) => {
+      productcollection.insert({logo:req.files.logo[0].filename,productid:req.body.id,producttitle:req.body.title,price:req.body.price,pd:req.body.pd,selected:sizeArray,vendorEmail:req.body.vendorEmail,category:req.body.category,subcat:req.body.subcat},(err, result) => {
           if (!err) {
               res.send({status:"success",data:result});
               

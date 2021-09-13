@@ -11,6 +11,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import Dashboard from './Dashboard/dashboard';
 import  Productdetail from "./productdetail";
 import Test from './test';
+import NightWear from './NightWear';
+import SareeWear from './SareeWear';
+import WesternWear from './WesternWear';
+import EthnicWear from './EthnicWear';
+
 
 function Navb() {
 
@@ -23,6 +28,28 @@ function Navb() {
 
   return (
     <>
+   <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className="sticky-top">
+        <Container>
+          {/* <NavLink exact activeClassName="active" to="/"> home </NavLink> */}
+          <Navbar.Brand>
+            {/* <img
+              src="https://image.freepik.com/free-vector/vector-vintage-camera_53876-36680.jpg"
+
+              className="d-inline-block align-top logosnap"
+              alt="Reactlogo"
+            /> */}
+            {/* <NavLink exact activeClassName="active" to="/" style={{ fontFamily: 'Yomogi' }} className="titlelogo">Snapped</NavLink> */}
+          </Navbar.Brand>
+            <Nav className="me-auto" id="navcenterlogoup" >
+            <img
+              src="https://cdn.shopify.com/s/files/1/2542/7564/files/Aachho_logo_tm_400x_e2f8afc1-9b63-4064-8e26-b4b89b3cea05_130x.png?v=1601715481"
+
+              className="d-inline-block align-top logosnap1 "
+              alt="Reactlogo"
+            />
+              </Nav>
+        </Container>
+      </Navbar>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className="sticky-top">
         <Container>
           {/* <NavLink exact activeClassName="active" to="/"> home </NavLink> */}
@@ -41,16 +68,16 @@ function Navb() {
               <Nav.Link> <NavLink exact activeClassName="active" to="/Login">
                 <i class="fas fa-magic"></i> JUST IN
               </NavLink></Nav.Link>
-              <Nav.Link><NavLink exact activeClassName="active" to="/ShoppingCart">
+              <Nav.Link><NavLink exact activeClassName="active" to="/Ethnic-Wear">
                 ETHNIC WEAR
               </NavLink></Nav.Link>
-              <Nav.Link><NavLink exact activeClassName="active" to="/Login" >
+              <Nav.Link><NavLink exact activeClassName="active" to="/Western-Wear" >
                 WESTERN WEAR
               </NavLink></Nav.Link>
-              <Nav.Link><NavLink exact activeClassName="active" to="/Login">
+              <Nav.Link><NavLink exact activeClassName="active" to="/Saree">
                 SAREES
               </NavLink></Nav.Link>
-              <Nav.Link><NavLink exact activeClassName="active" to="/Login">
+              <Nav.Link><NavLink exact activeClassName="active" to="/Night-Wear">
                 NIGHT WEAR
               </NavLink></Nav.Link>
               <Nav.Link><NavLink exact activeClassName="active" to="/dashboard" >
@@ -99,6 +126,12 @@ function Navb() {
         <Route path="/ShoppingCart" exact component={ShoppingCart} />
         <Route path="/dashboard" component={Dashboard} />
         <Route path="/productdetail/:id" component={Productdetail} />
+        <Route path="/Night-Wear" component={NightWear} />
+        <Route path="/Saree" component={SareeWear} />
+        <Route path="/Western-Wear" component={WesternWear} />
+        <Route path="/Ethnic-Wear" component={EthnicWear} />
+
+
 
       </Switch>
 

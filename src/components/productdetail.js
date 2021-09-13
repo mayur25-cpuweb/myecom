@@ -49,7 +49,6 @@ function Productdetail(props) {
       }
   }
 
-
   function sendtocart() {
     var btn1=document.getElementById('btn1');
 var btn2=document.getElementById('btn2');
@@ -57,6 +56,7 @@ var btn2=document.getElementById('btn2');
     var producttitlecart=productdetail.producttitle;
     var productqntycart=qnty;
     var productsizecart=size;
+    var productlogocart=productdetail.logo;
 
     var pricecart=productdetail.price;
     var statuscart="pending";
@@ -67,14 +67,14 @@ var btn2=document.getElementById('btn2');
       if (productsizecart=="None") {
         alert("choose size")
       }else{
-    alert(productsizecart);
+    alert(productlogocart);
     // alert(idcart);
     // alert(producttitlecart);
     // alert(productqntycart);
     // alert(pricecart);
     // alert(useremailcart);
     // alert(statuscart);
-    var s={idcart,producttitlecart,productqntycart,useremailcart,pricecart,productsizecart,statuscart}
+    var s={idcart,producttitlecart,productqntycart,useremailcart,pricecart,productsizecart,statuscart,productlogocart}
     axios.post('http://localhost:4000/Cart',s).then((res)=>{
       console.log(res.data);
       alert( `Product Added successfully`);
@@ -94,8 +94,10 @@ function hidebtn2() {
   return (
     <React.Fragment>
       <div className="card pdcard" onLoad={hidebtn2} >
-        <h1>{productdetail && productdetail._id}hello</h1>
+        <h1>{productdetail && productdetail.category}</h1>
         <h1>{!productdetail && "not availaible"}</h1>
+        {/* <h1>{productdetail && productdetail.selected}</h1> */}
+
         <div className="row no-gutter" >
           <div className="col-md-4">
             <div id="carouselExampleControls" className="carousel slide" data-ride="carousel" style={{ backgroundColor: 'black' }}>
@@ -134,7 +136,7 @@ function hidebtn2() {
                 {productdetail && productdetail.price}
                 {!productdetail && "price not availaible"}</i></h5>
               SIZE:
-                <select className="form-select dropdown" value={size} name="size" onChange={(e)=>{setvalue(e)}}
+                {/* <select className="form-select dropdown" value={size} name="size" onChange={(e)=>{setvalue(e)}}
                  aria-label="Default select example" style={{ width: '100px' }}>
                   <option value="None" >None</option>
                   <option value="S" >S</option>
@@ -143,7 +145,13 @@ function hidebtn2() {
                   <option value="XL">XL</option>
                   <option value="XXL">XXL</option>
                   <option value="XXXL">XXXL</option>
-                </select>
+                </select> */}
+                <select  className="form-select dropdown" value={size} name="size" onChange={(e)=>{setvalue(e)}}
+                style={{ width: '100px' }}>
+           {productdetail && JSON.parse(productdetail.selected).map((option) => (
+              <option value={option.value}>{option.label}</option>
+            ))}
+          </select>
               <br />
              
 

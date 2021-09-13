@@ -4,9 +4,9 @@ import thunk from 'redux-thunk';
 import {user} from '../reducers/userReducer';
 import {loading} from '../reducers/loading';
 import {Productreducer} from '../reducers/productreducer';
+import { Cartreducer } from "../reducers/cartreducer";
 
-
-var rootReducer = combineReducers({user,loading,Productreducer});
+var rootReducer = combineReducers({user,loading,Productreducer,Cartreducer});
 
 var store = createStore(rootReducer,
     composeWithDevTools(applyMiddleware(thunk))
