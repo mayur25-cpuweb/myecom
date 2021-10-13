@@ -10,7 +10,7 @@ import { BrowserRouter as Router, Link, Switch, Route, NavLink } from "react-rou
 function Productdetail(props) {
   const dispatch = useDispatch();
   const [qnty, setqnty] = useState(1);
-  const [size, setsize] = useState("None");
+  const [size, setsize] = useState("S");
   function setvalue(e) {
     e.target.name == "qnty" && setqnty(e.target.value);
     e.target.name === "size" && setsize(e.target.value);

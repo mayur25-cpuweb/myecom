@@ -58,16 +58,15 @@ app.post('/check-login', bodyParser.json() ,(req, res) => {
     })
 
 })
-app.get('/productlist',(req, res) => {
+app.post('/productlist',bodyParser.json(),(req, res) => {
     var productcollectionlist = connection.db('myecom').collection('Product');
-    productcollectionlist.find().toArray((err, result) => {
+    productcollectionlist.find({vendorEmail:req.body.email}).toArray((err, result) => {
         if (!err) {
             res.send({ status: 'ok', data: result });
         } else {
             res.send({ status: 'error', data: err })
         }
     })
-
 })
 
 app.post('/product-detail', bodyParser.json() ,(req, res) => {

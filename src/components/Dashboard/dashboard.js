@@ -72,9 +72,10 @@ window.addEventListener('DOMContentLoaded', event => {
                             </a>
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                <NavLink to="/dashboard/add-product"> Add Product </NavLink> 
+                                <NavLink className="nav-link" to="/dashboard/add-product">
+                                 Add Product </NavLink> 
 
-                                    <NavLink class="nav-link" to="/dashboard/list-product">List Product</NavLink>
+                                    <NavLink className="nav-link" to="/dashboard/list-product">List Product</NavLink>
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">

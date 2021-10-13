@@ -20,8 +20,6 @@ function ShoppingCart() {
         e.target.name == "qnty" && setqnty(e.target.value);
         e.target.name == "plus" && setplus(e.target.value);
         e.target.name == "minus" && setminus(e.target.value);
-
-
     }
     // const dispatch = useDispatch()
 
@@ -42,31 +40,22 @@ function ShoppingCart() {
         )
     }, []);
     
-    var gg=cart.map((e)=>{ return Number(e.pricecart)});
+    var pricesum=cart.map((e)=>{ return Number(e.pricecart)});
     // console.log(gg);
-    alert(gg+"gg")
-
     function sum(a,b) {
         return a+b;
     }
-    var sumo=gg.reduce(sum,0)
+    var sumo=pricesum.reduce(sum,0)
     console.log(sumo);
     // alert(sumo+"sumo");
 
     function increment(e){
-var hh=e.target.dataset.idp;
-    // alert(hh);
-    var jj=qnty+hh;
-alert (jj)
-
-    if (hh) {
-        // alert(hh+"hello");
-        setqnty(qnty+1);
-
-    }      else{
-        alert("none")
-    }
-
+var p_id=e.target.dataset.idp;
+var qty=Number(document.getElementById("qntyinput"+p_id).value);
+qty=qty+1;
+var setqty=document.getElementById("qntyinput"+p_id).value =Number(qty);
+setqnty(setqty);
+alert(qnty)
     }
       
       function decrement(){
@@ -79,13 +68,13 @@ alert (jj)
         }
       };
       function notfocus() {
-        if (qnty>=10) {
-          alert("Maximun product orders reached");
-          setqnty(10);
-        }else if(qnty<=1){
-          alert("quantity cant be zero");
-          setqnty(1);
-          }
+        // if (qnty>=10) {
+        //   alert("Maximun product orders reached");
+        //   setqnty(10);
+        // }else if(qnty<=1){
+        //   alert("quantity cant be zero");
+        //   setqnty(1);
+        //   }
       }
     
 
@@ -119,11 +108,11 @@ alert (jj)
 
                                                         <p className="card-text">
                                                             <small className="text-muted text-center">
-                                                                <div className=""  id="hole" style={{ display: 'flex', border: "1px solid", width: "100px", justifyContent: "center", height: "30px" }}>
+                                                                <div className=""  id={`qntydiv${filteredcartp.idcart}`} style={{ display: 'flex', border: "1px solid", width: "100px", justifyContent: "center", height: "30px" }}>
                                                                     <button type="button" class="" name="plus" onClick={(e)=>{increment(e)}} data-idp={filteredcartp.idcart} 
                                                                         style={{ width: "40px", backgroundColor: "transparent", border: "none", position: "relative" }}>+</button>
 
-                                                                    <input type="text" className="inputqnty text-center" name="qnty" value={filteredcartp.productqntycart} onChange={(e) => { setvalue(e); }}
+                                                                    <input type="text" id={`qntyinput${filteredcartp.idcart}`} className="inputqnty text-center" name="qnty" value={filteredcartp.productqntycart} onChange={(e) => { setvalue(e); }}
                                                                         style={{ width: "50px", border: "none" }}  onBlur={notfocus}  />
 
                                                                     <button type="button" className="" name="minus"  onClick={decrement} data-idp={filteredcartp.idcart} 
